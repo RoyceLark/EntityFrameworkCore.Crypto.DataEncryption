@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+		<LangVersion>10.0</LangVersion>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<AssemblyName>EntityFrameworkCore.Crypto.DataEncryption</AssemblyName>
+		<RootNamespace>Microsoft.EntityFrameworkCore.DataEncryption</RootNamespace>
+		<IsPackable>true</IsPackable>
+		<Version>8.0.2</Version>
+		<Authors>Royce Lark</Authors>
+		<PackageId>EntityFrameworkCore.Crypto.DataEncryption</PackageId>
+		<RepositoryType>git</RepositoryType>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageTags>entity-framework-core, extensions, dotnet-core, dotnet, encryption</PackageTags>
+		<PackageIcon>Icon.png</PackageIcon>
+		<Copyright>Royce Lark © 2022 - 2024</Copyright>
+		<Description>A plugin for Microsoft.EntityFrameworkCore to add support of encrypted fields using built-in or custom encryption providers.</Description>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+		<GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+	</PropertyGroup>
+
+	<ItemGroup Condition="('$(TargetFramework)' == 'net7.0')">
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="[7,)" />
+	</ItemGroup>
+	<ItemGroup Condition="('$(TargetFramework)' == 'net8.0')">
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="[8,)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="resources\Icon.png" />
+	</ItemGroup>
+	
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+			<_Parameter1>Microsoft.EntityFrameworkCore.Encryption.Test</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="resources\Icon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </Content>
+	</ItemGroup>
+
+
+</Project>
