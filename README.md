@@ -12,7 +12,7 @@ Royce Lark **do not** take responsability if you use/deploy this in a production
 
 Install the package from [NuGet](https://www.nuget.org/) or from the `Package Manager Console` :
 ```powershell
-PM> Install-Package MicrosoftEntityFrameworkCore.Crypto.DataEncryption
+PM> Install-Package EntityFrameworkCore.Crypto.DataEncryption
 ```
 
 ## Supported types
@@ -32,7 +32,7 @@ PM> Install-Package MicrosoftEntityFrameworkCore.Crypto.DataEncryption
 Depending on the initialization method you will use, you will need to decorate your `string` or `byte[]` properties of your entities with the `[CryptoEncrypted]` attribute or use the fluent `IsEncrypted()` method in your model configuration process.
 To use an encryption provider on your EF Core model, and enable the encryption on the `CryptoModelBuilder`. 
 
-### Example with `AesProvider` and attribute
+### Example with `CryptoAesProvider` and attribute
 
 ```csharp
 public class UserEntity
