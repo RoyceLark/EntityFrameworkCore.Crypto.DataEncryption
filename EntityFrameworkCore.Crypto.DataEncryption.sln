@@ -7,13 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3EC10767-181
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E4089551-AF4E-41B3-A6F8-2501A3BE0E0C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{64C3D7D1-67B8-4070-AE67-C71B761535CC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{64C3D7D1-67B8-4070-AE67-C71B761535CC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.Crypto.DataEncryption", "src\EntityFrameworkCore.Crypto.DataEncryption\EntityFrameworkCore.Crypto.DataEncryption.csproj", "{1C614839-1F30-4350-8120-EF86E4F99933}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AesCryptoSample", "samples\CryptoAesSample\AesCryptoSample.csproj", "{6320F122-B882-46D9-B0F8-CF05A08519A6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkCore.Crypto.DataEncryption.Test", "test\EntityFrameworkCore.Crypto.DataEncryption.Test\EntityFrameworkCore.Crypto.DataEncryption.Test.csproj", "{93499236-B587-4E46-ABFC-FD7DAB6BD38F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AesCryptoSample", "Example\CryptoAesSample\AesCryptoSample.csproj", "{D8A157C1-FD2A-46AD-8457-A242CF8EA316}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,22 +25,22 @@ Global
 		{1C614839-1F30-4350-8120-EF86E4F99933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C614839-1F30-4350-8120-EF86E4F99933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C614839-1F30-4350-8120-EF86E4F99933}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6320F122-B882-46D9-B0F8-CF05A08519A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6320F122-B882-46D9-B0F8-CF05A08519A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6320F122-B882-46D9-B0F8-CF05A08519A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6320F122-B882-46D9-B0F8-CF05A08519A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{93499236-B587-4E46-ABFC-FD7DAB6BD38F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{93499236-B587-4E46-ABFC-FD7DAB6BD38F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93499236-B587-4E46-ABFC-FD7DAB6BD38F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93499236-B587-4E46-ABFC-FD7DAB6BD38F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A157C1-FD2A-46AD-8457-A242CF8EA316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A157C1-FD2A-46AD-8457-A242CF8EA316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A157C1-FD2A-46AD-8457-A242CF8EA316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A157C1-FD2A-46AD-8457-A242CF8EA316}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1C614839-1F30-4350-8120-EF86E4F99933} = {3EC10767-1816-46B2-A78E-9856071CCFDB}
-		{6320F122-B882-46D9-B0F8-CF05A08519A6} = {64C3D7D1-67B8-4070-AE67-C71B761535CC}
 		{93499236-B587-4E46-ABFC-FD7DAB6BD38F} = {E4089551-AF4E-41B3-A6F8-2501A3BE0E0C}
+		{D8A157C1-FD2A-46AD-8457-A242CF8EA316} = {64C3D7D1-67B8-4070-AE67-C71B761535CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4997BAE9-29BF-4D79-AE5E-5605E7A0F049}
