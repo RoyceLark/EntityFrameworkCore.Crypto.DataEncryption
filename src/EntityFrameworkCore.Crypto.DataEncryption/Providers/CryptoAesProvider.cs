@@ -42,9 +42,12 @@ public class AesCryptoProvider : IEncryptionCryptoProvider
     /// <inheritdoc />
     public byte[] Encrypt(byte[] input)
     {
+        // Return null for null or empty input to match tests that expect null
         if (input is null || input.Length == 0)
         {
+#pragma warning disable CS8603 // Possible null reference return.
             return null;
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         using Aes aes = CreateCryptographyProvider(_key, _iv, _mode, _padding);
@@ -62,9 +65,12 @@ public class AesCryptoProvider : IEncryptionCryptoProvider
     /// <inheritdoc />
     public byte[] Decrypt(byte[] input)
     {
+        // Return null for null or empty input to match tests that expect null
         if (input is null || input.Length == 0)
         {
+#pragma warning disable CS8603 // Possible null reference return.
             return null;
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         using Aes aes = CreateCryptographyProvider(_key, _iv, _mode, _padding);

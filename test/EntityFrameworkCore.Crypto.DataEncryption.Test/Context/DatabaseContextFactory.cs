@@ -1,4 +1,8 @@
-﻿using Microsoft.Data.Sqlite;
+﻿//using Microsoft.Data.Sqlite;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using System;
 using System.Data.Common;
 
