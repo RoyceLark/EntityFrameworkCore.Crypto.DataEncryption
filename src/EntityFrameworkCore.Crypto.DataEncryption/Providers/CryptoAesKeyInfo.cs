@@ -40,7 +40,10 @@ public readonly struct CryptoAesKeyInfo : IEquatable<CryptoAesKeyInfo>
     /// </summary>
     /// <param name="obj"></param>
     /// <returns></returns>
-    public override bool Equals(object obj) => (obj is CryptoAesKeyInfo keyInfo) && Equals(keyInfo);
+    public override bool Equals(object? obj)
+    {
+        return (obj is CryptoAesKeyInfo keyInfo) && Equals(keyInfo);
+    }
 
     /// <summary>
     /// Calculates the hash code for the current <see cref="CryptoAesKeyInfo"/> instance.

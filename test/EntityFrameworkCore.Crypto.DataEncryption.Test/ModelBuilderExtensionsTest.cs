@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.DataEncryption;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.DataEncryption;
 using Microsoft.EntityFrameworkCore.DataEncryption.Providers;
 using Microsoft.EntityFrameworkCore.DataEncryption.Test.Context;
 using System;
@@ -14,7 +15,9 @@ public class ModelBuilderExtensionsTest
     [Fact]
     public void ModelBuilderShouldNeverBeNullTest()
     {
-        Assert.Throws<ArgumentNullException>(() => ModelBuilderExtensions.UseEncryption(null, null));
+        // Cast nulls to the expected parameter types to avoid ambiguity and ensure the
+        // extension method's null-check is exercised.
+        Assert.Throws<ArgumentNullException>(() => ModelBuilderExtensions.UseEncryption((ModelBuilder)null, (IEncryptionCryptoProvider)null));
     }
 
     [Fact]
@@ -22,7 +25,8 @@ public class ModelBuilderExtensionsTest
     {
         using var contextFactory = new DatabaseContextFactory();
 
-        Assert.Throws<ArgumentNullException>(() => contextFactory.CreateContext<InvalidPropertyDbContext>(null));
+        // Cast null to the provider interface so the factory's null-check is triggered.
+        Assert.Throws<ArgumentNullException>(() => contextFactory.CreateContext<InvalidPropertyDbContext>((IEncryptionCryptoProvider)null));
     }
 
     [Fact]
@@ -33,7 +37,8 @@ public class ModelBuilderExtensionsTest
 
         using var contextFactory = new DatabaseContextFactory();
 
-        Assert.Throws<NotImplementedException>(() => contextFactory.CreateContext<InvalidPropertyDbContext>(provider));
+        // The library throws NotSupportedException for unsupported property types.
+        Assert.Throws<NotSupportedException>(() => contextFactory.CreateContext<InvalidPropertyDbContext>(provider));
     }
 
     private class InvalidPropertyEntity

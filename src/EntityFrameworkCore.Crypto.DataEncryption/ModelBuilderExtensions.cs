@@ -86,14 +86,16 @@ public static class ModelBuilderExtensions
             };
         }
 
-        throw new NotImplementedException($"Type {propertyType.Name} does not support encryption.");
+        // Throw NotSupportedException for unsupported property types (test expects this)
+        throw new NotSupportedException($"Type {propertyType.Name} does not support encryption.");
     }
 
     private static IEnumerable<EncryptedProperty> GetEntityEncryptedProperties(IMutableEntityType entity)
     {
         return entity.GetProperties()
             .Select(x => EncryptedProperty.Create(x))
-            .Where(x => x is not null);
+            .Where(x => x is not null)
+            .Cast<EncryptedProperty>();
     }
 
     internal class EncryptedProperty
@@ -108,7 +110,7 @@ public static class ModelBuilderExtensions
             StorageFormat = storageFormat;
         }
 
-        public static EncryptedProperty Create(IMutableProperty property)
+        public static EncryptedProperty? Create(IMutableProperty property)
         {
             CryptoStorageFormat? storageFormat = null;
 
@@ -119,11 +121,16 @@ public static class ModelBuilderExtensions
                 storageFormat = encryptedAttribute.Format;
             }
 
-            IAnnotation encryptedAnnotation = property.FindAnnotation(CryptoPropertyAnnotations.IsEncrypted);
+            IAnnotation? encryptedAnnotation = property.FindAnnotation(CryptoPropertyAnnotations.IsEncrypted);
 
-            if (encryptedAnnotation != null && (bool)encryptedAnnotation.Value)
+            // Fix for CS8600: Converting null literal or possible null value to non-nullable type.
+            if (encryptedAnnotation != null && encryptedAnnotation.Value is bool isEncrypted && isEncrypted)
             {
-                storageFormat = (CryptoStorageFormat)property.FindAnnotation(CryptoPropertyAnnotations.StorageFormat)?.Value;
+                var storageFormatAnnotation = property.FindAnnotation(CryptoPropertyAnnotations.StorageFormat);
+                if (storageFormatAnnotation?.Value is CryptoStorageFormat format)
+                {
+                    storageFormat = format;
+                }
             }
 
             return storageFormat.HasValue ? new EncryptedProperty(property, storageFormat.Value) : null;
